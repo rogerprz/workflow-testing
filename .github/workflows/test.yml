@@ -1,0 +1,10 @@
+name: test-ci
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: run command
+      shell: bash
+      run: echo "hello"
