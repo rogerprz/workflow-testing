@@ -1,10 +1,20 @@
 name: test-ci
 on:
-  workflow_dispatch:
+  issues:
+    types: [opened]
 jobs:
-  build:
+  open-new-issue:
     runs-on: ubuntu-latest
     steps:
-    - name: run command
-      shell: bash
-      run: echo "hello"
+      - uses: actions/checkout@v2
+      - uses: JasonEtco/create-an-issue@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          filename: .github/designer-transformer-template.md
+      - uses: JasonEtco/create-an-issue@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          filename: .github/jenkinsfile-transformer-template.md
+        if: github.event.label.name == 'transformer'
