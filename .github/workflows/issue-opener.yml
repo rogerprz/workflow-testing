@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Open a designer transformer issue 
-        if: ${{ github.event.label.name == 'transformer' }}
+        if: ${{ github.event.label.name == 'transformer' }} || ${{ github.event.label.name == 'designer-transformer' }}
         uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
