@@ -14,21 +14,21 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
       - uses: actions/checkout@v2
       - name: Open a designer transformer issue 
-        if: github.event.label.name == 'transformer'
+        if: contains( github.event.issue.labels.*.name, 'transformer')
         uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           filename: .github/ISSUE_TEMPLATE/designer-transformer-template.md
       - name: Open a jenkinsfile transformer issue
-        if: github.event.label.name == 'transformer'
+        if: contains( github.event.issue.labels.*.name, 'transformer')
         uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           filename: .github/ISSUE_TEMPLATE/jenkinsfile-transformer-template.md
       - name: Close original transformer issue
-        if: github.event.label.name == 'transformer'
+        if: contains( github.event.issue.labels.*.name, 'transformer')
         uses: peter-evans/close-issue@v1
         with:
           comment: |
@@ -39,7 +39,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Open a designer transformer issue 
-        if: github.event.label.name == 'jenkinsfile'
+        if: contains( github.event.issue.labels.*.name, 'jenkinsfile-transformer')
         uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -51,7 +51,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Open a jenkinsfile transformer issue 
-        if: github.event.label.name == 'designer'
+        if: contains( github.event.issue.labels.*.name, 'designer-transformer')
         uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
