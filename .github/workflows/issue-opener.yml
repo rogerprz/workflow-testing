@@ -28,26 +28,4 @@ jobs:
           comment: |
             Auto closing this issue.
 
-  jenkinsfile-transformer: 
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Open a designer transformer issue
-        if: ${{ github.event.label.name == 'jenkinsfile-transformer' }}
-        uses: JasonEtco/create-an-issue@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          filename: .github/ISSUE_TEMPLATE/designer-transformer-template.md
-      
-  designer-transformer: 
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Open a jenkinsfile transformer issue
-        if: ${{ github.event.label.name == 'designer-transformer' }}
-        uses: JasonEtco/create-an-issue@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          filename: .github/ISSUE_TEMPLATE/jenkinsfile-transformer-template.md
+  
