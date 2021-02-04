@@ -6,7 +6,10 @@ jobs:
   open-transformer-issues:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ github.event.label.name == 'transformer' }}
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
       - uses: actions/checkout@v2
       - name: Open a designer transformer issue 
         if: github.event.label.name == 'transformer'
