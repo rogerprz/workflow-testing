@@ -17,14 +17,14 @@ jobs:
         with:
           filename: .github/ISSUE_TEMPLATE/designer-transformer-template.md
       - name: Open a jenkinsfile transformer issue
-        if: ${{ github.event.label.name == 'transformer' }}
+        if: contains( toJson(github), 'transformer' )
         uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           filename: .github/ISSUE_TEMPLATE/jenkinsfile-transformer-template.md
       - name: Close original transformer issue
-        if: ${{ github.event.label.name == 'transformer' }}
+        if: contains( toJson(github), 'transformer' )
         uses: peter-evans/close-issue@v1
         with:
           comment: |
