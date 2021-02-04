@@ -6,17 +6,16 @@ jobs:
   open-new-issues:
     runs-on: ubuntu-latest
     steps:
-      - run: echo " ${{ github.event.label }} "
       - uses: actions/checkout@v2
       - uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           filename: .github/ISSUE_TEMPLATE/designer-transformer-template.md
-        if: github.event.label == 'transformer'
+        if: ${{ github.event.label.name }} == 'transformer'
       - uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           filename: .github/ISSUE_TEMPLATE/jenkinsfile-transformer-template.md
-        if: github.event.label == 'transformer'
+        if:  ${{ github.event.label.name }} == 'transformer'
