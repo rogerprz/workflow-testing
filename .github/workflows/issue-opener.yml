@@ -6,6 +6,8 @@ jobs:
   open-new-issues:
     runs-on: ubuntu-latest
     steps:
+      - run: |
+          echo "Comment on issue #${{ github.event.label.name }}"
       - uses: actions/checkout@v2
       - name: Open a designer transformer issue 
         if: ${{ github.event.label.name == 'transformer' }} || ${{ github.event.label.name == 'designer-transformer' }}
