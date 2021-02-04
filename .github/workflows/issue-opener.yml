@@ -3,7 +3,7 @@ on:
   issues:
     types: [opened]
 jobs:
-  open-new-issues:
+  open-transformer-issues:
     runs-on: ubuntu-latest
     steps:
       - run: |
@@ -29,3 +29,27 @@ jobs:
         with:
           comment: |
             Auto closing this issue.
+
+  open-only-designer-issues:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Open a designer transformer issue 
+        if: contains( toJson(github), 'jenkinsfile-transformer' )
+        uses: JasonEtco/create-an-issue@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          filename: .github/ISSUE_TEMPLATE/designer-transformer-template.md
+ 
+  open-only-jenkinsfile-issues:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Open a jenkinsfile transformer issue 
+        if: contains( toJson(github), 'designer-transformer' )
+        uses: JasonEtco/create-an-issue@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          filename: .github/ISSUE_TEMPLATE/jenkinsfile-transformer-template.md
