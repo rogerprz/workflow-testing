@@ -5,24 +5,22 @@ on:
 jobs:
   transformer:
     runs-on: ubuntu-latest
+    if: ${{ github.event.label.name == 'transformer' }}
     steps:
       - uses: actions/checkout@v2
       - name: Open a designer transformer issue
-        if: ${{ github.event.label.name == 'transformer' }}
         uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           filename: .github/ISSUE_TEMPLATE/designer-transformer-template.md
       - name: Open a jenkinsfile transformer issue
-        if:  ${{ github.event.label.name == 'transformer' }}
         uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           filename: .github/ISSUE_TEMPLATE/jenkinsfile-transformer-template.md
       - name: Close original transformer issue
-        if:  ${{ github.event.label.name == 'transformer' }}
         uses: peter-evans/close-issue@v1
         with:
           comment: |
