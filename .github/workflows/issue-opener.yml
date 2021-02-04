@@ -6,8 +6,6 @@ jobs:
   open-transformer-issues:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo "Comment on issue #${{ github.event.label }}"
       - uses: actions/checkout@v2
       - name: Open a designer transformer issue 
         if: contains( toJson(github), 'transformer' )
