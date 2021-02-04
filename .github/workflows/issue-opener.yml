@@ -11,10 +11,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          filename: .github/designer-transformer-template.md
+          filename: .github/ISSUE_TEMPLATE/designer-transformer-template.md
       - uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          filename: .github/jenkinsfile-transformer-template.md
+          filename: .github/ISSUE_TEMPLATE/jenkinsfile-transformer-template.md
         if: github.event.label.name == 'transformer'
