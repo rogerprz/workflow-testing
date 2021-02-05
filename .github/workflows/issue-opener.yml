@@ -20,7 +20,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          filename: .github/invisible_issue_templates/jenkinsfile-transformer-template.md
+          filename: .github/invisible_issue_templates/JENKINSFILE.md
       - name: Close original transformer issue
         if: contains( github.event.issue.labels.*.name, 'transformer')
         uses: peter-evans/close-issue@v1
@@ -38,7 +38,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          filename: .github/invisible_issue_templates/designer-transformer-template.md
+          filename: .github/invisible_issue_templates/DESIGNER.md
  
   open-only-jenkinsfile-issues:
     runs-on: ubuntu-latest
