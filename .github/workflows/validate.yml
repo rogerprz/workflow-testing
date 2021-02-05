@@ -12,4 +12,4 @@ jobs:
     - name: install act
       run: brew install -s act
     - name: run act
-      run: act -n
+      run: act -n -P ubuntu-latest=catthehacker/ubuntu:act-latest
