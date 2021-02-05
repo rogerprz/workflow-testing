@@ -11,3 +11,5 @@ jobs:
       uses: Homebrew/actions/setup-homebrew@master
     - name: install act
       run: brew install act
+    - name: run act
+      run: act -n
