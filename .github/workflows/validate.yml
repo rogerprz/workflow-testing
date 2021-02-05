@@ -10,6 +10,6 @@ jobs:
       id: set-up-homebrew
       uses: Homebrew/actions/setup-homebrew@master
     - name: install act
-      run: brew install act
+      run: brew install -s act
     - name: run act
       run: act -n
