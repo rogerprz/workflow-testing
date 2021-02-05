@@ -14,9 +14,4 @@ jobs:
     - name: install act
       run: brew install -s act
     - name: run act
-      run: act -j unit-test > act.txt
-    - name: Upload artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: act.txt
-        path: act.txt
+      run: echo act -j unit-test
