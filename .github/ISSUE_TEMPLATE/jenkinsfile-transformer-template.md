@@ -6,10 +6,3 @@ labels: jenkinsfile-transformer
 assignees:
 ---
 
-## Description
-
-### Configuration example
-
-```xml
-
-```
