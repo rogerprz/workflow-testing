@@ -1,7 +1,7 @@
 ---
 name: Jenkinsfile Transformer Work Item
 about: Issue to track jenkinsfile transformer work items
-title: jenkinsfile {{ payload.issue.title }}
+title: 
 labels: jenkinsfile-transformer
 assignees:
 ---
