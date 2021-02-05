@@ -1,7 +1,7 @@
 ---
 name: Designer Transformer Work Item
 about: Issue to track designer transformer work items
-title: 
+title: {{ env.TITLE }}
 labels: designer-transformer
 assignees:
 ---
