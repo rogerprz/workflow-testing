@@ -17,7 +17,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          filename: .github/secret_issue_template/designer.md
+          filename: .github/invisible_issue_template/DESIGNER.md
       - name: Assign this issue to Valet project
         uses: srggrs/assign-one-project-github-action@1.2.0
         if: github.event.action == 'opened' && (github.event.issue.number == steps.create-issue.outputs.number)
@@ -34,7 +34,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          filename: .github/secret_issue_template/jenkinsfile.md
+          filename: .github/invisible_issue_template/JENKINSFILE.md
       - name: Assign this issue to Valet project
         uses: srggrs/assign-one-project-github-action@1.2.0
         if: github.event.action == 'opened' && (github.event.issue.number == steps.create-issue.outputs.number)
