@@ -2,6 +2,8 @@ name: issue-opener
 on:
   issues:
     types: [opened]
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   open-transformer-issues:
     runs-on: ubuntu-latest
