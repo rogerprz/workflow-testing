@@ -18,14 +18,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           filename: .github/invisible_issue_templates/DESIGNER.md
-      - name: test 
-        run: echo "${{ github.event.issue.number == steps.create-issue.outputs.number }}"
-      - name: Assign this issue to Valet project
+      - name: Assign issues and pull requests with `designer-transformer` label to project board
         uses: srggrs/assign-one-project-github-action@1.2.0
-        if: github.event.action == 'opened' && (github.event.issue.number == steps.create-issue.outputs.number)
+        if: contains(github.event.issue.labels.*.name, 'designer-transformer')
         with:
           project: 'https://github.com/sophiederosa/workflow-testing/projects/1'
- 
+
   open-jenkinsfile-issue:
     runs-on: ubuntu-latest
     steps:
@@ -37,8 +35,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           filename: .github/invisible_issue_templates/JENKINSFILE.md
-      - name: Assign this issue to Valet project
+      - name: Assign issues and pull requests with `jenkinsfile-transformer` label to project board
         uses: srggrs/assign-one-project-github-action@1.2.0
-        if: github.event.action == 'opened' && (github.event.issue.number == steps.create-issue.outputs.number)
+        if: contains(github.event.issue.labels.*.name, 'jenkinsfile-transformer')
         with:
           project: 'https://github.com/sophiederosa/workflow-testing/projects/1'
