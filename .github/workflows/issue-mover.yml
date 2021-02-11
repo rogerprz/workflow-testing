@@ -4,6 +4,7 @@ on:
     types: [opened]
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+jobs:  
   assign-to-valet:
     runs-on: ubuntu-latest
     steps:
