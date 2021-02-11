@@ -32,14 +32,3 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           filename: .github/invisible_issue_templates/JENKINSFILE.md
-  assign-to-valet:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Assign issues and pull requests with either transformer labels to project board
-        uses: srggrs/assign-one-project-github-action@1.2.0
-        if: |
-          contains(github.event.issue.labels.*.name, 'designer-transformer') ||
-          contains(github.event.issue.labels.*.name, 'jenkinsfile-transformer')
-        with:
-          project: 'https://github.com/sophiederosa/workflow-testing/projects/1'
-          column_name: 'To do'
