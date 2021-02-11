@@ -18,6 +18,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           filename: .github/invisible_issue_templates/DESIGNER.md
+      - name: test 
+        run: github.event.issue.number == steps.create-issue.outputs.number
       - name: Assign this issue to Valet project
         uses: srggrs/assign-one-project-github-action@1.2.0
         if: github.event.action == 'opened' && (github.event.issue.number == steps.create-issue.outputs.number)
