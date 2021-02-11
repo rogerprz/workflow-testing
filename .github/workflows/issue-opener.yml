@@ -7,28 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Open a designer transformer issue 
-        if: contains( github.event.issue.labels.*.name, 'transformer')
-        uses: JasonEtco/create-an-issue@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          filename: .github/invisible_issue_templates/DESIGNER.md
-      - name: Open a jenkinsfile transformer issue
-        if: contains( github.event.issue.labels.*.name, 'transformer')
-        uses: JasonEtco/create-an-issue@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          filename: .github/invisible_issue_templates/JENKINSFILE.md
-      - name: Close original transformer issue
-        if: contains( github.event.issue.labels.*.name, 'transformer')
-        uses: peter-evans/close-issue@v1
-        with:
-          comment: |
-            Auto closing this issue.
-
-  open-only-designer-issues:
+  open-designer-issue:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -38,9 +17,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          filename: .github/invisible_issue_templates/DESIGNER.md
+          filename: .github/secret_issue_template/designer.md
+      - name: Assign this issue to Valet project
+        uses: srggrs/assign-one-project-github-action@1.2.0
+        if: github.event.action == 'opened' && (github.event.issue.number == steps.create-issue.outputs.number)
+        with:
+          project: 'https://github.com/sophiederosa/workflow-testing/projects/1'
  
-  open-only-jenkinsfile-issues:
+  open-jenkinsfile-issue:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -50,4 +34,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          filename: .github/invisible_issue_templates/JENKINSFILE.md
+          filename: .github/secret_issue_template/jenkinsfile.md
+      - name: Assign this issue to Valet project
+        uses: srggrs/assign-one-project-github-action@1.2.0
+        if: github.event.action == 'opened' && (github.event.issue.number == steps.create-issue.outputs.number)
+        with:
+          project: 'https://github.com/sophiederosa/workflow-testing/projects/1'
